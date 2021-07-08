@@ -81,7 +81,7 @@ dsub \
   --regions us-west1 \ 
   --machine-type n1-standard-8 \
   --logging gs://{LOG_BUCKET}/MVP_Genomes/cnvnator_0.4.1 \ 
-  --name MGIBio_CNVnator0.4.1 \ 
+  --name clinicalgenomics_CNVnator0.4.1 \ 
   --image clinicalgenomics/cnvnator:0.4.1 \ 
   --input BAM="gs://{BUCKET_ID}/{INPUT_FILE_PATH}/{FILE_NAME}" \ 
   --input-recursive DIR="gs://genomics-public-data/references/GRCh38" \ 
