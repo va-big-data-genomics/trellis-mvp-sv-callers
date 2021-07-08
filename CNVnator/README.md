@@ -83,9 +83,9 @@ dsub \
   --logging gs://{LOG_BUCKET}/MVP_Genomes/cnvnator_0.4.1 \ 
   --name MGIBio_CNVnator0.4.1 \ 
   --image clinicalgenomics/cnvnator:0.4.1 \ 
-  --input BAM="gs://{BUCKET_ID}/{INPUT_FILE_PATH}" \ 
+  --input BAM="gs://{BUCKET_ID}/{INPUT_FILE_PATH}/{FILE_NAME}" \ 
   --input-recursive DIR="gs://{BUCKET_ID}/{REFERENCE_FOLDER_PATH}" \ 
-  --output ROOT="gs://{BUCKET_ID}/{PATH}" \ 
+  --output ROOT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
   --output CALL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
   --output EVAL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}"\ 
   --output CALL_VCF="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \
