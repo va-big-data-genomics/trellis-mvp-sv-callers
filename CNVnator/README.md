@@ -76,21 +76,21 @@ Dsub is a command line tool that helps simplify job submission and running of ba
 # Dsub Script
 ```
 dsub \
-  --provider Provider_Name \ 
-  --project Project_Name \ 
-  --regions Region_Code \ 
-  --machine-type Machine_Type \
-  --logging gs://Bucket_Name>/Path_To_Log_Files \ 
-  --name Name \ 
-  --image NameOfImage \ 
-  --input BAM="gs://Bucket_Name/Path_To_Bam_File" \ 
-  --input-recursive DIR="gs://Bucket_Name/Path_To_Reference_Folder" \ 
-  --output ROOT="gs://Bucket_Name/Path_To_Root" \ 
-  --output CALL_OUT="gs://Bucket_Name/Path_To_Call_Output" \ 
-  --output EVAL_OUT="gs://Bucket_Name/Path_To_Statistics_Output"\ 
-  --output CALL_VCF="gs://Bucket_Name/Path_To_VCF_Output" \
-  --output GENOTYPE_OUT="gs://Bucket_Name/Path_To_Genotype_Output" \ 
-  --script "gs://Bucket_Name/Path_To_Script" 
+  --provider google-v2 \ 
+  --project {PROJECT_ID} \ 
+  --regions us-west1 \ 
+  --machine-type n1-standard-8 \
+  --logging gs://{LOG_BUCKET}/MVP_Genomes/cnvnator_0.4.1 \ 
+  --name MGIBio_CNVnator0.4.1 \ 
+  --image clinicalgenomics/cnvnator:0.4.1 \ 
+  --input BAM="gs://{BUCKET_ID}/{INPUT_FILE_PATH}" \ 
+  --input-recursive DIR="gs://{BUCKET_ID}/{REFERENCE_FOLDER_PATH}" \ 
+  --output ROOT="gs://{BUCKET_ID}/{PATH}" \ 
+  --output CALL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
+  --output EVAL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}"\ 
+  --output CALL_VCF="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \
+  --output GENOTYPE_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
+  --script "gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" 
 ```   
 
 # CNVnator commands <br>
