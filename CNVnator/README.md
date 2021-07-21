@@ -76,21 +76,22 @@ Dsub is a command line tool that helps simplify job submission and running of ba
 # Dsub Script
 ```
 dsub \
-  --provider google-v2 \ 
-  --project {PROJECT_ID} \ 
-  --regions us-west1 \ 
-  --machine-type n1-standard-8 \
-  --logging gs://{LOG_BUCKET}/MVP_Genomes/cnvnator_0.4.1 \ 
-  --name clinicalgenomics_CNVnator0.4.1 \ 
-  --image clinicalgenomics/cnvnator:0.4.1 \ 
-  --input BAM="gs://{BUCKET_ID}/{INPUT_FILE_PATH}/{FILE_NAME}" \ 
-  --input-recursive DIR="gs://genomics-public-data/references/GRCh38" \ 
-  --output ROOT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
-  --output CALL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
-  --output EVAL_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}"\ 
-  --output CALL_VCF="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \
-  --output GENOTYPE_OUT="gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" \ 
-  --script "gs://{BUCKET_ID}/{PATH}/{FILE_NAME}" 
+--provider google-v2 \
+--project Project_ID \
+--regions us-west1 \
+--machine-type n1-standard-8 \
+--logging gs://BucketName/Path/FileName \
+--name MVP_Genomes \
+--image clinicalgenomics/cnvnator:0.4.1 \
+--input BAM="gs://BucketName/Path/FileName" \
+--input-recursive DIR="gs://BucketName/ReferenceFolder" \
+--output ROOT="gs://BucketName/Path/Filename" \
+--output CALL_OUT="gs://BucketName/Path/FileName" \
+--output EVAL_OUT="gs://BucketName/Path/FileName"\
+--output CALL_VCF="gs://BucketName/Path/FileName" \
+--output GENOTYPE_OUT="gs://BucketName/Path/FileName" \
+--script "gs://BucketName/FileName"
+
 ```   
 
 # CNVnator commands <br>
