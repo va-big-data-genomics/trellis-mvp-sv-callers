@@ -1,0 +1,5 @@
+<h1> Analysis of MVP genomes <h1>
+
+# This document contains codes and expalnations for the various analysis done on MVP genomes through BigQuery. 
+
+The queries were run on BigQuery. Input datasets were the MVP genomes run through CNVnator to call structural variants. Subsequently the datasets were run through the Variant Transforms pipeline to convert from ```.vcf``` to SQL tables. 
