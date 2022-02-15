@@ -130,4 +130,57 @@ Ensure that the bash script is located in the reference bucket. This script will
 ```
   docker pull vandhanak/cnvnator
 ```
+
+4. Make sure all necessary files are avaialble - BAM's, Reference fasta files (stored in a directory separated by chromosome).
+ Note:
+ a. Ensure the BAM files are in tact. Check headers to make sure chromosome names match the reference 
+ b. Ensure directory contaianing references is accessible 
  
+5. Extract read mapping <br>
+   Read mapping step requires the user to provide 3 main input files - Root file (specified using -root), BAM file (specified using -tree) and the chromosomes (specified using -chrom) to run the analysis on. If no chromosome information is specified then all chromosomes from bam file will be extracted.
+```
+cnvnator -root file.root -tree file.bam -chrom $(seq -f 'chr%g' 1 22) chrX chrY
+```
+
+6. Generate Histogram <br>
+   The bin size maybe specified using the ```-his``` parameter. This depends on the coverage of the sample. For the MVP genomes we have used the bin size of 100. Supply complete path of reference genome. Ensure this is separated by chromosome. Ensure labelling of individual chromsomes match the BAM headers. 
+```   
+cnvnator -root file.root -his 100 -d dir_with_genome_fa
+```
+To learn about more ways of running the above [see here](https://github.com/abyzovlab/CNVnator)
+
+7. Calculate statistics <br>
+```
+cnvnator -root file.root -stat 100
+```
+8. Partition <br>
+```
+cnvnator -root file.root -partition 100
+```
+This is the longest step in the entire pipeline. For each of the MVP sample this step ran for about 2 hours. 
+
+9. Call CNVs <br>
+```
+cnvnator -root file.root -call 100 > file.out
+```
+The ```call.out``` is the output file that contains all the structural variants called. The file also has other information such as start point, end point, class of structural variant and also the q0 values. 
+
+Note: Ensure q0 values have a non-zero value. 
+
+10. CNVnator output to VCF format <br>
+   The script ```cnvnator2vcf.pl``` is a perl script that is present within the CNVnator tool. The script is can be found locally within CNVnator from <br>
+   ```
+   /app/CNVnator_v0.4.1/src/cnvnator2VCF.pl
+   ```
+   Running the script: <br>
+   ```
+   perl /app/CNVnator_v0.4.1/src/cnvnator2VCF.pl file.out dir_with_genome_fa > file.vcf
+   ```
+   Note: The location of the perl script is specific for version 0.4.1. 
+   
+ 11. Genotyping <br>
+     Genotyping can be done region specific or for all the calls present in the vcf output. The below runs genotyping for all the structural variants that were called. 
+   ```
+   awk '{print $2} END {print "exit"}' file.out | cnvnator -root file.root -genotype 100 > file_genotype.out 
+   ```
+   To see more ways of running genotyping [click here](https://github.com/abyzovlab/CNVnator)
